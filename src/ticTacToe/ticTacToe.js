@@ -14,9 +14,11 @@ function Square(props) {
 class Board extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props.isXTerm);
     this.state = {
-      squares: Array(9).fill(null),
-      isXTerm: true,
+      squares: props.squares,
+      isXTerm: props.isXTerm,
+      handleClick: props.handleClick,
     };
   }
   
@@ -24,18 +26,9 @@ class Board extends React.Component {
     return (
       <Square 
         mark={this.state.squares[i]} 
-        onClick={() => this.handleClick(i)}
+        onClick={() => this.state.handleClick(i)}
       />
     );
-  }
-  
-  handleClick(i) {
-    let squares = this.state.squares.slice();
-    squares[i] = this.state.isXTerm? 'X' : 'O';
-    this.setState({
-      squares: squares,
-      isXTerm: !this.state.isXTerm,
-    });
   }
 
   render() {
@@ -65,11 +58,37 @@ class Board extends React.Component {
 }
 
 export default class Game extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      history: [this._initSquares()],
+      isXterm: true,
+    };
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(i) {
+    let newSquares = this._initSquares(this.state.history[this.state.history.length - 1]);
+    newSquares[i] = this.state.isXTerm? 'X' : 'O';
+    let history = this.state.history.slice();
+    history.push(newSquares);
+
+    this.setState({
+      history: history,
+      isXTerm: !this.state.isXTerm,
+    });
+  }
+
   render() {
     return (
       <div className="game">
         <div className="game-board">
-          <Board />
+          <Board
+            isXTerm={this.state.isXTerm}
+            squares={this.state.history[this.state.history.length - 1]}
+            handleClick={this.handleClick}
+          />
         </div>
         <div className="game-info">
           <div>{/* status */}</div>
@@ -77,5 +96,9 @@ export default class Game extends React.Component {
         </div>
       </div>
     );
+  }
+
+  _initSquares(squares = Array(9).fill(null)) {
+    return squares.slice();
   }
 }
