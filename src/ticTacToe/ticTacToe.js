@@ -49,6 +49,7 @@ export default class Game extends React.Component {
     super(props);
     this.state = {
       history: [this._initSquares()],
+      currentStep: 0,
       isXTerm: true,
       winner: null,
     };
@@ -60,33 +61,64 @@ export default class Game extends React.Component {
     if (this.state.winner)
       return;
 
-    let newSquares = this._initSquares(this.state.history[this.state.history.length - 1]);
+    const prevSquares = this.state.history[this.state.currentStep];
+    if (prevSquares[i])
+      return;
+
+    let newSquares = this._initSquares(prevSquares);
     newSquares[i] = this.state.isXTerm? 'X' : 'O';
-    let history = this.state.history.concat([newSquares]);
+    let newHistory = this.state.history
+      .slice(0, this.state.currentStep + 1)
+      .concat([newSquares]);
 
     this.setState({
-      history: history,
+      history: newHistory,
+      currentStep: this.state.currentStep + 1,
       isXTerm: !this.state.isXTerm,
       winner: this._checkWinner(newSquares),
     });
   }
 
+  goToStep(i) {
+    if (i === this.state.currentStep)
+      return;
+
+    this.setState({
+      currentStep: i,
+      isXTerm: (i % 2 === 0),
+    });
+  }
+
   render() {
-    const status = this.state.winner 
+    const status = this.state.winner
       ? `Player ${this.state.winner} wins!`
       : `Next player: ` + (this.state.isXTerm ? 'X' : 'O');
+
+    const goToStepButtons = (
+      <ul>
+        {this.state.history.map((squares, index) => {
+          return (
+            <li key={index}>
+              <button
+                onClick={() => this.goToStep(index)}
+              >{`Go to step ${index}`}</button>
+            </li>
+          );
+        })}
+      </ul>
+    );
 
     return (
       <div className="game">
         <div className="game-board">
           <Board
-            squares={this.state.history[this.state.history.length - 1]}
+            squares={this.state.history[this.state.currentStep]}
             handleClick={this.handleClick}
           />
         </div>
         <div className="game-info">
           <div className="status">{status}</div>
-          <ol>{/* TODO */}</ol>
+          <ol>{goToStepButtons}</ol>
         </div>
       </div>
     );
