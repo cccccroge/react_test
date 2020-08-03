@@ -86,6 +86,7 @@ export default class Game extends React.Component {
     this.setState({
       currentStep: i,
       isXTerm: (i % 2 === 0),
+      winner: this._checkWinner(this.state.history[i]),
     });
   }
 
