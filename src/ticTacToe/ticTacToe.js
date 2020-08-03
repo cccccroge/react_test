@@ -50,6 +50,7 @@ export default class Game extends React.Component {
     this.state = {
       history: [this._initSquares()],
       currentStep: 0,
+      record: [-1],
       isXTerm: true,
       winner: null,
     };
@@ -71,9 +72,14 @@ export default class Game extends React.Component {
       .slice(0, this.state.currentStep + 1)
       .concat([newSquares]);
 
+    let newRecord = this.state.record
+      .slice(0, this.state.currentStep + 1)
+      .concat([i]);
+
     this.setState({
       history: newHistory,
       currentStep: this.state.currentStep + 1,
+      record: newRecord,
       isXTerm: !this.state.isXTerm,
       winner: this._checkWinner(newSquares),
     });
@@ -98,11 +104,20 @@ export default class Game extends React.Component {
     const goToStepButtons = (
       <ul>
         {this.state.history.map((squares, index) => {
+          let description = 'game start';
+
+          if (index) {
+            const player = (index % 2 === 0) ? 'O' : 'X';
+            const record = this.state.record[index];
+            const position = [Math.floor(record / 3) + 1, (record % 3) + 1];
+            description = `${player} on position (${position[0]}, ${position[1]})`;
+          }
+
           return (
             <li key={index}>
               <button
                 onClick={() => this.goToStep(index)}
-              >{`Go to step ${index}`}</button>
+              >{`Go to step ${index}: ${description}`}</button>
             </li>
           );
         })}
