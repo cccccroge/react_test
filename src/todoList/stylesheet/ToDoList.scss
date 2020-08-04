@@ -1,0 +1,17 @@
+.flex-horizontal {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    // justify-content: space-between;
+    align-items: flex-start;
+
+    >.nav-bar {
+        flex-grow: 1;
+        background-color: #00BFFF;
+    }
+
+    >.board {
+        flex-grow: 6;
+        background-color: #B0E0E6;
+    }
+}
