@@ -1,9 +1,13 @@
 .flex-horizontal {
+    height: 100%;
+
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
-    // justify-content: space-between;
-    align-items: flex-start;
+
+    >.nav-bar, >.board {
+        height: 100%;
+        padding: 30px;
+    }
 
     >.nav-bar {
         flex-grow: 1;
