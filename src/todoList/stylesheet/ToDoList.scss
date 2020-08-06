@@ -5,6 +5,7 @@
     flex-direction: row;
 
     >.nav-bar, >.board {
+        box-sizing: border-box;
         height: 100%;
         padding: 40px;
     }
