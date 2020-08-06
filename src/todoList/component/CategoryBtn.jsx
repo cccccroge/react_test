@@ -9,7 +9,7 @@ const CategoryBtn = (props) => {
       className="category-btn"
       type="button"
       name="category"
-      value="daily"
+      value={name}
     >
       {name}
     </button>
