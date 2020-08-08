@@ -9,6 +9,7 @@ const CategoryList = (props) => {
   const { context } = useContext(ToDoListContext);
 
   const [ categories, setCategories ] = useState(context.categories);
+  const [ isMouseIn, setIsMouseIn ] = useState(false);
 
   // Event
   const handleAddBtnClick = (e) => {
@@ -16,17 +17,26 @@ const CategoryList = (props) => {
     newc.push("new category");
     setCategories(newc);
   };
-    
-  // Helper
+
+  const handleMouseEnter = () => {
+    setIsMouseIn(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsMouseIn(false);
+  }
+
+  // Render
   const getCatetoryButtons = () => (
     categories.map((category) => (
       <CategoryBtn name={category} key={category} />
     ))
   );
 
-  // Render
+  const listClassName = "flex-vertical" + (!isMouseIn ? " scrollbar-hiden" : '');
+
   return (
-    <div className="flex-vertical">
+    <div className={listClassName} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} >
       {getCatetoryButtons()}
       <AddBtn onClick={handleAddBtnClick} />
     </div>
