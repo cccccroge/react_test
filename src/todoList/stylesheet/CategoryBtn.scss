@@ -1,13 +1,27 @@
-.category-btn {
+.category-btn, .category-input {
     font-size: 16px;
     font-weight: bold;
     color: #EBFCFF;
 
+    background-color: #71B1D9;
+}
+
+.category-btn {
     width: 100%;
     min-height: 60px;
     margin-bottom: 30px;
 
-    background-color: #3C6FCD;
     border: none;
     border-radius: 8px;
+}
+
+.category-input {
+    font-size: 16px;
+    font-weight: bold;
+    color: #EBFCFF;
+    
+    border-bottom: 2px solid #7ED1F2;
+
+    display: inline-block;
+    text-align: center;
 }

@@ -1,3 +1,7 @@
+:root {
+    --nav-bar-background-color: #2C4C59;
+}
+
 .flex-horizontal {
     height: 100%;
 
@@ -12,11 +16,11 @@
 
     >.nav-bar {
         flex-grow: 1;
-        background-color: #0E1C36;
+        background-color: var(--nav-bar-background-color);
     }
 
     >.board {
         flex-grow: 6;
-        background-color: #AFCBFF;
+        background-color: #ACDEF2;
     }
 }
