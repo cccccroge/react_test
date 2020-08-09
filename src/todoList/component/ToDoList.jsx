@@ -7,15 +7,30 @@ import { ToDoListContext, data_storage } from "../model/ToDoListContext";
 const ToDoList = (props) => {
   const [context, setContext] = useState(data_storage);
 
-  const addCategory = (category) => {
-    setContext({ categories: [...context.categories, category] });
+  // API
+  /*  Add a new category named 'name' */
+  // TODO: check whether is duplicated
+  const addCategory = (name) => {
+    setContext({ categories: [...context.categories, name] });
   };
-//   const changeCategoryName = (from, to) => {
-//     setContext({ categories });
-//   };
+
+  /*  Change an existing category name from 'from' to 'to',
+      update all associate tasks with the new category name */
+  // TODO: check if from exist
+  // TODO: finish update part after todo sheet is done
+  const setCategoryName = (from, to) => {
+    if (from === to) {
+      return;
+    }
+
+    const categories = context.categories;
+    const index = categories.indexOf(from);
+    categories[index] = to;
+    setContext({ categories: categories });
+  };
 
   return (
-    <ToDoListContext.Provider value={{ context, addCategory }}>
+    <ToDoListContext.Provider value={{ context, addCategory, setCategoryName }}>
       <div className="flex-horizontal">
         <div className="nav-bar">
           <CategoryList />

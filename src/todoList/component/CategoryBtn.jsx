@@ -1,11 +1,13 @@
 import "../stylesheet/CategoryBtn.scss";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
+import { ToDoListContext } from "../model/ToDoListContext";
 
 const CategoryBtn = (props) => {
   const { name } = props;
 
+  const { setCategoryName } = useContext(ToDoListContext);
+
   const [ isEdit, setIsEdit ] = useState(false);
-  let editName = name;
 
   const inputRef = useRef(null);
 
@@ -25,8 +27,21 @@ const CategoryBtn = (props) => {
     range.setStart(element, 1);
     sel.removeAllRanges();
     sel.addRange(range);
+  };
 
-    element.focus();
+  const handleInputBlur = () => {
+    confirmText();
+  };
+
+  const handleInputKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      confirmText();
+    }
+  }
+
+  const confirmText = () => {
+    setIsEdit(false);
+    setCategoryName(name, inputRef.current.textContent);
   };
 
   // Render
@@ -45,8 +60,10 @@ const CategoryBtn = (props) => {
           role="textbox"
           contentEditable
           suppressContentEditableWarning="true"
+          onBlur={handleInputBlur}
+          onKeyDown={handleInputKeyDown}
         >
-          {editName}
+          {name}
         </span>
       )}
       {!isEdit && name}

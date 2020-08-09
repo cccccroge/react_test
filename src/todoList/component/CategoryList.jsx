@@ -6,16 +6,14 @@ import { ToDoListContext } from "../model/ToDoListContext";
 import AddBtn from "../component/AddBtn";
 
 const CategoryList = (props) => {
-  const { context } = useContext(ToDoListContext);
+  const { context, addCategory } = useContext(ToDoListContext);
+  const { categories } = context;
 
-  const [ categories, setCategories ] = useState(context.categories);
   const [ isMouseIn, setIsMouseIn ] = useState(false);
 
   // Event
   const handleAddBtnClick = (e) => {
-    const newc = categories.slice();
-    newc.push("new category");
-    setCategories(newc);
+    addCategory('new category');
   };
 
   const handleMouseEnter = () => {
