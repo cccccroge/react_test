@@ -5,7 +5,7 @@ import { ToDoListContext } from "../model/ToDoListContext";
 const CategoryBtn = (props) => {
   const { name } = props;
 
-  const { setCategoryName } = useContext(ToDoListContext);
+  const { setCategoryName, setCurrentCategory } = useContext(ToDoListContext);
 
   const [ isEdit, setIsEdit ] = useState(false);
 
@@ -44,6 +44,10 @@ const CategoryBtn = (props) => {
     setCategoryName(name, inputRef.current.textContent);
   };
 
+  const handleBtnClick = () => {
+    setCurrentCategory(name);
+  };
+
   // Render
   return (
     <button
@@ -52,6 +56,7 @@ const CategoryBtn = (props) => {
       name="category"
       value={name}
       onDoubleClick={handleBtnDoubleClick}
+      onClick={handleBtnClick}
     >
       {isEdit && (
         <span
