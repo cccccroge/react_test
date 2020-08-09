@@ -5,10 +5,10 @@
 
     height: 100%;
     overflow-y: auto;
-    scrollbar-width: thin;
+    scrollbar-width: thin;  /* Firefox */
 }
 
 .scrollbar-hiden {
-    scrollbar-color: var(--nav-bar-background-color) var(--nav-bar-background-color);
+    overflow-y: hidden;
 }
 
