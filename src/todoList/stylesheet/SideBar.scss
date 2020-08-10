@@ -2,3 +2,17 @@
     display: flex;
     flex-direction: column;
 }
+
+.header {
+    flex-grow: 0;
+}
+
+hr {
+    // border-top: 1px solid red;
+    margin: 0;
+    align-self: stretch;
+}
+
+.category-list {
+    flex-grow: 1;
+}
