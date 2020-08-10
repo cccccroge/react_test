@@ -1,6 +1,6 @@
 import "../stylesheet/ToDoList.scss";
 import React, { useState } from "react";
-import CategoryList from "../component/CategoryList";
+import SideBar from "../component/SideBar";
 import ToDoBoard from "../component/ToDoBoard";
 import { ToDoListContext, data_storage } from "../model/ToDoListContext";
 import { pick } from "lodash";
@@ -54,10 +54,10 @@ const ToDoList = (props) => {
       }}
     >
       <div className="flex-horizontal">
-        <div className="nav-bar">
-          <CategoryList />
+        <div className="side-bar">
+          <SideBar />
         </div>
-        <div className="board">
+        <div className="workspace">
           <ToDoBoard category={context.current_category} />
         </div>
       </div>

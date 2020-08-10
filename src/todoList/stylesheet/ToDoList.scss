@@ -1,5 +1,5 @@
 :root {
-    --nav-bar-background-color: #2C4C59;
+    --side-bar-background-color: #2C4C59;
 }
 
 .flex-horizontal {
@@ -8,18 +8,18 @@
     display: flex;
     flex-direction: row;
 
-    >.nav-bar, >.board {
+    >.side-bar, >.workspace {
         box-sizing: border-box;
         height: 100%;
         padding: 40px;
     }
 
-    >.nav-bar {
+    >.side-bar {
         flex-grow: 1;
-        background-color: var(--nav-bar-background-color);
+        background-color: var(--side-bar-background-color);
     }
 
-    >.board {
+    >.workspace {
         flex-grow: 6;
         background-color: #ACDEF2;
     }
