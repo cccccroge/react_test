@@ -53,8 +53,8 @@ const ToDoList = (props) => {
         setCurrentCategory,
       }}
     >
-      <div className="flex-horizontal">
-        <div className="side-bar">
+      <div id="to-do-list">
+        <div className="side-bar-container">
           <SideBar />
         </div>
         <div className="workspace">

@@ -5,12 +5,12 @@ import Header from "./Header";
 const SideBar = (props) => {
   return (
     <React.Fragment>
-        <div className="flex-vertical">
-            <div className="header">
-            <Header />
+        <div id="side-bar">
+            <div className="header-container">
+              <Header />
             </div>
-            <div className="category-list">
-            <CategoryList />
+            <div className="category-list-container">
+              <CategoryList />
             </div>
         </div>
         <hr />

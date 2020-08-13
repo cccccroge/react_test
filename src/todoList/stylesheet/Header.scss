@@ -2,31 +2,24 @@
     --header-content-color: #6FA3B8;
 }
 
-.flex-horizontal {
+#header {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: flex-end;
-}
 
-svg {
-    fill: var(--header-content-color);
-    margin-right: 10px;
-    width: 135px;
-    height: 135px;
-}
+    >svg {
+        fill: var(--header-content-color);
+        margin-right: 10px;
+        width: 72px;
+        height: 72px;
+    }
 
-
-
-.title {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-
-    h1 {
+    >h1 {
         font-family: 'Exo', sans-serif;
-        font-size: 75px;
+        font-size: 48px;
         color: var(--header-content-color);
         margin: 0px;
     }
 }
+

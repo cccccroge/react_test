@@ -2,25 +2,24 @@
     --side-bar-background-color: #2C4C59;
 }
 
-.flex-horizontal {
+#to-do-list {
     height: 100%;
 
     display: flex;
     flex-direction: row;
 
-    >.side-bar, >.workspace {
+    >.side-bar-container, >.workspace {
         box-sizing: border-box;
-        height: 100%;
         padding: 40px;
     }
 
-    >.side-bar {
-        flex-grow: 1;
+    >.side-bar-container {
+        flex: 1 1 0;
         background-color: var(--side-bar-background-color);
     }
 
     >.workspace {
-        flex-grow: 6;
+        flex: 4 0 0;
         background-color: #ACDEF2;
     }
 }

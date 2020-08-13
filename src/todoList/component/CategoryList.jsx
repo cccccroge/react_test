@@ -30,11 +30,11 @@ const CategoryList = (props) => {
       <CategoryBtn name={category} key={category} />
     ));
 
-  const listClassName =
-    "flex-vertical" + (!isMouseIn ? " scrollbar-hiden" : "");
+  const listClassName = (!isMouseIn ? "scrollbar-hiden" : "");
 
   return (
     <div
+      id="category-list"
       className={listClassName}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
