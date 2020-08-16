@@ -29,8 +29,8 @@ const ToDoTask = (props) => {
         </div>
         <div className="todo-task-inner-right">
           <label>{deadlineString}</label>
-          <svg width="10" height="10">
-            <circle cx="5" cy="5" r="5" fill={getPriorityColor()} />
+          <svg width="20" height="20">
+            <circle cx="10" cy="10" r="10" fill={getPriorityColor()} />
           </svg>
         </div>
       </div>
