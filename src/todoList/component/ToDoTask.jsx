@@ -1,4 +1,5 @@
 import React from "react";
+import "../stylesheet/ToDoTask.scss"
 
 const ToDoTask = (props) => {
     const { name, deadline, priority } = props;
@@ -20,18 +21,20 @@ const ToDoTask = (props) => {
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     const deadlineString = deadline.toLocaleDateString(undefined, options);
 
-    return (<div className="outer-flex-horizontal">
-        <div className="inner-flex-horizontal-left">
-            <input type="checkbox" />
-            <label>{name}</label>
+    return (
+      <div className="todo-task-container">
+        <div className="todo-task-inner-left">
+          <input type="checkbox" />
+          <label>{name}</label>
         </div>
-        <div className="inner-flex-horizontal-right">
-            <label>{deadlineString}</label>
-            <svg width="100" height="100">
-                <circle cx="50" cy="50" r="40" fill={getPriorityColor()} />
-            </svg>
+        <div className="todo-task-inner-right">
+          <label>{deadlineString}</label>
+          <svg width="10" height="10">
+            <circle cx="5" cy="5" r="5" fill={getPriorityColor()} />
+          </svg>
         </div>
-    </div>);
+      </div>
+    );
 };
 
 export default ToDoTask;

@@ -1,11 +1,12 @@
 import { createContext } from "react";
 
 /* emulate data storage from server */
-export const data_storage = {
+export const store = {
   categories: ["daily", "art", "programming"],
-  current_category: "",
+  currentCategory: "",
   tasks: [
     {
+      id: 1,
       name: "eat",
       description: "I should eat",
       deadline: new Date(2020, 8, 15),
@@ -13,6 +14,7 @@ export const data_storage = {
       priority: "medium",
     },
     {
+      id: 2,
       name: "shit",
       description: "I should shit",
       deadline: new Date(2020, 8, 20),
@@ -20,6 +22,7 @@ export const data_storage = {
       priority: "low",
     },
     {
+      id: 3,
       name: "cao",
       description: "I should cao",
       deadline: new Date(2020, 9, 13),
