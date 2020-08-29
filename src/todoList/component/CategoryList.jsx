@@ -1,6 +1,6 @@
 import "../stylesheet/CategoryList.scss";
 import React from "react";
-import CategoryBtn from "../component/CategoryBtn";
+import CategoryItem from "../component/CategoryItem";
 import { useContext, useState } from "react";
 import { ToDoListContext } from "../model/ToDoListContext";
 import AddBtn from "../component/AddBtn";
@@ -27,7 +27,7 @@ const CategoryList = (props) => {
   // Render
   const getCatetoryButtons = () =>
     categories.map((category) => (
-      <CategoryBtn name={category} key={category} />
+      <CategoryItem name={category} key={category} />
     ));
 
   const listClassName = (!isMouseIn ? "scrollbar-hiden" : "");

@@ -1,8 +1,8 @@
-import "../stylesheet/CategoryBtn.scss";
+import "../stylesheet/CategoryItem.scss";
 import React, { useState, useRef, useContext } from "react";
 import { ToDoListContext } from "../model/ToDoListContext";
 
-const CategoryBtn = (props) => {
+const CategoryItem = (props) => {
   const { name } = props;
 
   const { setCategoryName, setCurrentCategory } = useContext(ToDoListContext);
@@ -76,4 +76,4 @@ const CategoryBtn = (props) => {
   );
 };
 
-export default CategoryBtn;
+export default CategoryItem;
