@@ -1,6 +1,13 @@
 .editable-text {
-  background-color: none;
-  &.editing {
+  background-color: transparent;
+  border: none;
+  width: fit-content;
 
+  font-size: 16px;
+  font-weight: bold;
+  color: #ebfcff;
+
+  &.editing {
+    border-bottom: 2px solid #7ed1f2;
   }
 }

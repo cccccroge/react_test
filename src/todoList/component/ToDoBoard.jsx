@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react";
 import ToDoTask from "./ToDoTask";
-import WithSeparators from "./reusable/WithSeparators"
-import "../stylesheet/ToDoBoard.scss"
-import EditableText from './reusable/EditableText';
+import WithSeparators from "./reusable/WithSeparators";
+import "../stylesheet/ToDoBoard.scss";
+import EditableText from "./reusable/EditableText";
 
 const ToDoBoard = (props) => {
   const { tasks } = props;
@@ -17,15 +17,11 @@ const ToDoBoard = (props) => {
     />
   ));
 
-  const separator = (
-    <div className="separator"></div>
-  );
+  const separator = <div className="separator"></div>;
 
   return (
     <div id="todo-board">
-      <WithSeparators separator={separator}>
-        {toDoTasks}
-      </WithSeparators>
+      <WithSeparators separator={separator}>{toDoTasks}</WithSeparators>
       <EditableText placeHolder="enter category name..." />
     </div>
   );
