@@ -1,58 +1,69 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import "../../stylesheet/reusable/EditableText.scss";
 
 const EditableText = (props) => {
-  const { placeHolder, editOnCreated = false, className = "" } = props;
+  const { placeholder, className: customClass } = props;
+
+  const [text, setText] = useState('');
 
   const inputRef = useRef(null);
-
-  useEffect(() => {
-    if (editOnCreated) {
-      inputRef.current.focus();
-    }
-  }, []);
-
-  const [isEdit, setIsEdit] = useState(editOnCreated);
-  const getClassName = () => {
-    const classArr = ["editable-text"];
-    if (isEdit) {
-      classArr.push("editing");
-    }
-    if (className) {
-      classArr.push(className);
-    }
-    return classArr.join(" ");
+  
+  const [isEdit, setIsEdit] = useState(false);
+  const onMouseDown = e => {
+    e.preventDefault();
   };
-
-  const onDoubleClick = (_e) => {
-    inputRef.current.focus();
+  const onDoubleClick = _e => {
+    setIsEdit(true);
+    const el = inputRef.current;
+    el.focus();
+    moveCursorToEnd(el, text.length);
   };
   const onKeyDown = (e) => {
-    const blurKeys = ["Enter", "Escape"];
-    if (blurKeys.includes(e.key)) {
+    const exitKeys = ["Enter", "Escape"];
+    if (exitKeys.includes(e.key)) {
       inputRef.current.blur();
     }
   };
-  const onFocus = () => {
-    setIsEdit(true);
-  };
-  const onBlur = () => {
+  const onInputBlur = (e) => {
+    setText(inputRef.current.innerText);
     setIsEdit(false);
   };
 
+  const classNames = ['editable-text'];
+  if (isEdit) {
+    classNames.push('editing');
+  }
+  if (!text) {
+    classNames.push('placeholder');
+  }
+  if (customClass) {
+    classNames.push(customClass);
+  }
+
   return (
-    <input
+    <span
       ref={inputRef}
-      className={getClassName()}
-      type="text"
-      placeholder={placeHolder}
-      onPointerDown={(e) => e.preventDefault()}
+      className={classNames.join(" ")}
+      contentEditable={true}
+      suppressContentEditableWarning={true}
+      spellCheck={false}
+      onMouseDown={onMouseDown}
       onDoubleClick={onDoubleClick}
       onKeyDown={onKeyDown}
-      onFocus={onFocus}
-      onBlur={onBlur}
-    />
+      onBlur={onInputBlur}
+    >
+      {text ? text : isEdit ? text : placeholder}
+    </span>
   );
 };
 
 export default EditableText;
+
+function moveCursorToEnd(element, length) {
+  const range = document.createRange();
+  const sel = window.getSelection();
+  range.setStart(element.childNodes[0], length);
+  range.collapse(true);
+  sel.removeAllRanges();
+  sel.addRange(range);
+}

@@ -22,7 +22,7 @@ const ToDoBoard = (props) => {
   return (
     <div id="todo-board">
       <WithSeparators separator={separator}>{toDoTasks}</WithSeparators>
-      <EditableText placeHolder="enter category name..." />
+      <EditableText placeholder="enter category name..." />
     </div>
   );
 };

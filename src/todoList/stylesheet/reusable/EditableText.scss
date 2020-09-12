@@ -10,4 +10,7 @@
   &.editing {
     border-bottom: 2px solid #7ed1f2;
   }
+  &.placeholder {
+    opacity: 0.75;
+  }
 }
