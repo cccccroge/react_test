@@ -1,79 +1,43 @@
 import "../stylesheet/CategoryItem.scss";
-import React, { useState, useRef, useContext } from "react";
+import React, { useContext } from "react";
 import { ToDoListContext } from "../model/ToDoListContext";
+import EditableText from "./reusable/EditableText";
 
 const CategoryItem = (props) => {
-  const { name } = props;
-
+  const { name, categoryIconKey } = props;
   const { setCategoryName, setCurrentCategory } = useContext(ToDoListContext);
 
-  const [ isEdit, setIsEdit ] = useState(false);
-
-  const inputRef = useRef(null);
-
-  // Event
-  const handleBtnDoubleClick = (e) => {
-    e.preventDefault();
-    setIsEdit(true);
-    setTimeout(() => {
-      const input = inputRef.current;
-      focusToTextEnd(input);
-    }, 0);
+  const onConfirmText = (text) => {
+    setCategoryName(name, text);
   };
 
-  const focusToTextEnd = (element) => {
-    var range = document.createRange();
-    var sel = window.getSelection();
-    range.setStart(element, 1);
-    sel.removeAllRanges();
-    sel.addRange(range);
-  };
-
-  const handleInputBlur = () => {
-    confirmText();
-  };
-
-  const handleInputKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      confirmText();
-    }
-  }
-
-  const confirmText = () => {
-    setIsEdit(false);
-    setCategoryName(name, inputRef.current.textContent);
-  };
-
-  const handleBtnClick = () => {
+  const onClick = () => {
     setCurrentCategory(name);
   };
 
-  // Render
   return (
-    <button
-      className="category-btn"
-      type="button"
-      name="category"
-      value={name}
-      onDoubleClick={handleBtnDoubleClick}
-      onClick={handleBtnClick}
-    >
-      {isEdit && (
-        <span
-          ref={inputRef}
-          className="category-input"
-          role="textbox"
-          contentEditable
-          suppressContentEditableWarning="true"
-          onBlur={handleInputBlur}
-          onKeyDown={handleInputKeyDown}
-        >
-          {name}
-        </span>
-      )}
-      {!isEdit && name}
-    </button>
+    <div onClick={onClick}>
+      <img src={iconKey2Path(categoryIconKey)} alt="category icon"></img>
+      <EditableText
+        defaultText={name}
+        placeholder="Your category"
+        onConfirmText={onConfirmText}
+      />
+    </div>
   );
 };
 
 export default CategoryItem;
+
+function iconKey2Path(key) {
+  switch (key) {
+    case 'calendar':
+      return `/logo192.png`;
+    case 'laptop':
+      return `src/todoList/assets/category_icon/laptop.svg`;
+    case 'paint_brush':
+      return `src/todoList/assets/category_icon/paint-brush.svg`;
+    default:
+      throw new Error("Icon key for category is not found");
+  }
+}

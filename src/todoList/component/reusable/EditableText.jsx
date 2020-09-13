@@ -2,9 +2,14 @@ import React, { useState, useRef } from "react";
 import "../../stylesheet/reusable/EditableText.scss";
 
 const EditableText = (props) => {
-  const { placeholder, className: customClass } = props;
+  const {
+    defaultText = "",
+    placeholder,
+    className: customClass,
+    onConfirmText,
+  } = props;
 
-  const [text, setText] = useState('');
+  const [text, setText] = useState(defaultText);
 
   const inputRef = useRef(null);
   
@@ -25,8 +30,12 @@ const EditableText = (props) => {
     }
   };
   const onInputBlur = (e) => {
-    setText(inputRef.current.innerText);
+    const newText = inputRef.current.innerText;
+    setText(newText);
     setIsEdit(false);
+    if (onConfirmText) {
+      onConfirmText(newText);
+    }
   };
 
   const classNames = ['editable-text'];

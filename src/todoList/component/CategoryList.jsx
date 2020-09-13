@@ -27,7 +27,11 @@ const CategoryList = (props) => {
   // Render
   const getCatetoryButtons = () =>
     categories.map((category) => (
-      <CategoryItem name={category} key={category} />
+      <CategoryItem
+        name={category}
+        key={category}
+        categoryIconKey={"calendar"}
+      />
     ));
 
   const listClassName = (!isMouseIn ? "scrollbar-hiden" : "");
