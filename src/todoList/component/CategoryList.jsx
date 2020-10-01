@@ -1,6 +1,6 @@
 import '../stylesheet/CategoryList.scss';
 import React from 'react';
-import CategoryBtn from '../component/CategoryBtn';
+import CategoryItem from '../component/CategoryItem';
 import { useContext, useState } from 'react';
 import { ToDoListContext } from '../model/ToDoListContext';
 import AddBtn from '../component/AddBtn';
@@ -11,7 +11,7 @@ const CategoryList = props => {
 	const [isMouseIn, setIsMouseIn] = useState(false);
 
 	const handleAddBtnClick = e => {
-		addCategory('new category');
+		addCategory('');
 	};
 
 	const handleMouseEnter = () => {
@@ -22,14 +22,14 @@ const CategoryList = props => {
 		setIsMouseIn(false);
 	};
 
-	const getCatetoryButtons = () =>
-		categories.map(category => (
-			<CategoryBtn
-				name={category}
-				key={category}
-				categoryIconKey={'calendar'}
-			/>
-		));
+	const catetoryItems = categories.map(category => (
+		<CategoryItem
+			key={category.id}
+			id={category.id}
+			name={category.name}
+			categoryIconKey={category.iconKey}
+		/>
+	));
 
 	const listClassName = !isMouseIn ? 'scrollbar-hiden' : '';
 
@@ -40,7 +40,7 @@ const CategoryList = props => {
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
 		>
-			{getCatetoryButtons()}
+			{catetoryItems}
 			<AddBtn onClick={handleAddBtnClick} />
 		</div>
 	);
