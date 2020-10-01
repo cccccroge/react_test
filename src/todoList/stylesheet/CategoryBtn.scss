@@ -1,26 +1,22 @@
-.category-btn, .category-input {
-    font-size: 16px;
-    font-weight: bold;
-    color: #EBFCFF;
+@import 'common/colors.scss';
 
-    border: none;
-    background-color: #71B1D9;
+.category-btn,
+.category-input {
+	font-size: 16px;
+	font-weight: bold;
+	color: $light-blue;
+	border: none;
+	background-color: $sky-blue;
 }
 
 .category-btn {
-    min-height: 60px;
-    margin-bottom: 30px;
-
-    border-radius: 8px;
+	min-height: 60px;
+	margin-bottom: 30px;
+	border-radius: 8px;
 }
 
 .category-input {
-    font-size: 16px;
-    font-weight: bold;
-    color: #EBFCFF;
-    
-    border-bottom: 2px solid #7ED1F2;
-
-    display: inline-block;
-    text-align: center;
+	border-bottom: 2px solid $sky-blue-saturate;
+	display: inline-block;
+	text-align: center;
 }

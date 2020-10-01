@@ -1,13 +1,13 @@
 #workspace {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
 
-    #todo-board {
-        flex: 1 1 0;
-    }
+	#todo-board {
+		flex: 1 1 0;
+	}
 
-    #action-status-bar {
-        flex: 0 1 0;
-    }
+	#action-status-bar {
+		flex: 0 1 0;
+	}
 }

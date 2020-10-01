@@ -1,32 +1,28 @@
-:root {
-    --header-content-color: #6FA3B8;
-}
+@import 'common/colors.scss';
 
 #header {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-end;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: flex-end;
+	margin: 20px 20px 10px 20px;
+	padding-bottom: 10px;
+	border: 0;
+	border-bottom: 1px;
+	border-style: solid;
+	border-color: gray;
 
-    margin: 20px 20px 10px 20px;
-    padding-bottom: 10px;
-    border: 0;
-    border-bottom: 1px;
-    border-style: solid;
-    border-color: gray;
+	> svg {
+		fill: $gray-blue;
+		margin-right: 10px;
+		width: 72px;
+		height: 72px;
+	}
 
-    >svg {
-        fill: var(--header-content-color);
-        margin-right: 10px;
-        width: 72px;
-        height: 72px;
-    }
-
-    >h1 {
-        font-family: 'Exo', sans-serif;
-        font-size: 48px;
-        color: var(--header-content-color);
-        margin: 0px;
-    }
+	> h1 {
+		font-family: 'Exo', sans-serif;
+		font-size: 48px;
+		color: $gray-blue;
+		margin: 0px;
+	}
 }
-

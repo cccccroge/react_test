@@ -1,20 +1,17 @@
-:root {
-    --todo-board-background-color: #ACDEF2;
-}
+@import 'common/colors.scss';
 
 #todo-board {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
-
-    padding: 40px;
-    background-color: var(--todo-board-background-color);
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: stretch;
+	padding: 40px;
+	background-color: $gray-blue-light;
 }
 
 .separator {
-    border: 0;
-    border-bottom: 1px;
-    border-style: dotted;
-    border-color: gray;
+	border: 0;
+	border-bottom: 1px;
+	border-style: dotted;
+	border-color: gray;
 }

@@ -1,79 +1,74 @@
-import "../stylesheet/CategoryBtn.scss";
-import React, { useState, useRef, useContext } from "react";
-import { ToDoListContext } from "../model/ToDoListContext";
+import '../stylesheet/CategoryBtn.scss';
+import React, { useState, useRef, useContext } from 'react';
+import { ToDoListContext } from '../model/ToDoListContext';
 
-const CategoryBtn = (props) => {
-  const { name } = props;
+const CategoryBtn = props => {
+	const { name } = props;
+	const { setCategoryName, setCurrentCategory } = useContext(ToDoListContext);
+	const [isEdit, setIsEdit] = useState(false);
+	const inputRef = useRef(null);
 
-  const { setCategoryName, setCurrentCategory } = useContext(ToDoListContext);
+	const handleBtnDoubleClick = e => {
+		e.preventDefault();
+		setIsEdit(true);
+		setTimeout(() => {
+			const input = inputRef.current;
+			focusToTextEnd(input);
+		}, 0);
+	};
 
-  const [ isEdit, setIsEdit ] = useState(false);
+	const focusToTextEnd = element => {
+		var range = document.createRange();
+		var sel = window.getSelection();
+		range.setStart(element, 1);
+		sel.removeAllRanges();
+		sel.addRange(range);
+	};
 
-  const inputRef = useRef(null);
+	const handleInputBlur = () => {
+		confirmText();
+	};
 
-  // Event
-  const handleBtnDoubleClick = (e) => {
-    e.preventDefault();
-    setIsEdit(true);
-    setTimeout(() => {
-      const input = inputRef.current;
-      focusToTextEnd(input);
-    }, 0);
-  };
+	const handleInputKeyDown = e => {
+		if (e.key === 'Enter') {
+			confirmText();
+		}
+	};
 
-  const focusToTextEnd = (element) => {
-    var range = document.createRange();
-    var sel = window.getSelection();
-    range.setStart(element, 1);
-    sel.removeAllRanges();
-    sel.addRange(range);
-  };
+	const confirmText = () => {
+		setIsEdit(false);
+		setCategoryName(name, inputRef.current.textContent);
+	};
 
-  const handleInputBlur = () => {
-    confirmText();
-  };
+	const handleBtnClick = () => {
+		setCurrentCategory(name);
+	};
 
-  const handleInputKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      confirmText();
-    }
-  }
-
-  const confirmText = () => {
-    setIsEdit(false);
-    setCategoryName(name, inputRef.current.textContent);
-  };
-
-  const handleBtnClick = () => {
-    setCurrentCategory(name);
-  };
-
-  // Render
-  return (
-    <button
-      className="category-btn"
-      type="button"
-      name="category"
-      value={name}
-      onDoubleClick={handleBtnDoubleClick}
-      onClick={handleBtnClick}
-    >
-      {isEdit && (
-        <span
-          ref={inputRef}
-          className="category-input"
-          role="textbox"
-          contentEditable
-          suppressContentEditableWarning="true"
-          onBlur={handleInputBlur}
-          onKeyDown={handleInputKeyDown}
-        >
-          {name}
-        </span>
-      )}
-      {!isEdit && name}
-    </button>
-  );
+	return (
+		<button
+			className="category-btn"
+			type="button"
+			name="category"
+			value={name}
+			onDoubleClick={handleBtnDoubleClick}
+			onClick={handleBtnClick}
+		>
+			{isEdit && (
+				<span
+					ref={inputRef}
+					className="category-input"
+					role="textbox"
+					contentEditable
+					suppressContentEditableWarning="true"
+					onBlur={handleInputBlur}
+					onKeyDown={handleInputKeyDown}
+				>
+					{name}
+				</span>
+			)}
+			{!isEdit && name}
+		</button>
+	);
 };
 
 export default CategoryBtn;
