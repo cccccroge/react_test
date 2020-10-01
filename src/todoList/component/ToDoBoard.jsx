@@ -2,6 +2,7 @@ import React from 'react';
 import ToDoTask from './ToDoTask';
 import WithSeparators from './reusable/WithSeparators';
 import '../stylesheet/ToDoBoard.scss';
+import EditableText from './reusable/EditableText';
 
 const ToDoBoard = props => {
 	const { tasks } = props;
@@ -20,6 +21,7 @@ const ToDoBoard = props => {
 	return (
 		<div id="todo-board">
 			<WithSeparators separator={separator}>{toDoTasks}</WithSeparators>
+			<EditableText placeholder="enter category name..." />
 		</div>
 	);
 };

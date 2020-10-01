@@ -1,4 +1,4 @@
-import '../stylesheet/CategoryBtn.scss';
+import '../stylesheet/CategoryItem.scss';
 import React, { useState, useRef, useContext } from 'react';
 import { ToDoListContext } from '../model/ToDoListContext';
 
