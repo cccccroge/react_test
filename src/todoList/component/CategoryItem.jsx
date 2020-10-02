@@ -5,7 +5,7 @@ import EditableText from './reusable/EditableText';
 import { iconSVGs } from '../utils/iconSVGs';
 
 const CategoryItem = props => {
-	const { id, name, categoryIconKey } = props;
+	const { id, name, categoryIconKey, active } = props;
 	const { setCategoryName, setCurrentCategoryId } = useContext(ToDoListContext);
 
 	const onConfirmText = text => {
@@ -16,8 +16,12 @@ const CategoryItem = props => {
 		setCurrentCategoryId(id);
 	};
 
+	const itemClassName = ['category-item', active && 'active']
+		.filter(Boolean)
+		.join(' ');
+
 	return (
-		<div onClick={onClick}>
+		<div className={itemClassName} onClick={onClick}>
 			{iconSVGs[categoryIconKey]}
 			<EditableText
 				defaultText={name}

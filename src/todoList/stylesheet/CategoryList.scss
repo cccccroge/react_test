@@ -2,15 +2,8 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	align-items: stretch;
-	// height: 500px;
-	// max-height: 100%;
+	// align-items: stretch;
 	overflow-y: auto;
-	// scrollbar-width: thin;  /* Firefox */
-
-	padding: 0 20px 200px 20px;
+	scrollbar-width: thin;  /* Firefox */
+	padding: 0 30px 200px 30px;
 }
-
-// .scrollbar-hiden {
-//     overflow-y: hidden !important;
-// }

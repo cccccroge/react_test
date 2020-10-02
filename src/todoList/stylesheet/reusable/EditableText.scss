@@ -1,3 +1,5 @@
+@import '../common/colors.scss';
+
 .editable-text {
   background-color: transparent;
   border: none;
@@ -5,10 +7,10 @@
   outline: none;
   font-size: 16px;
   font-weight: bold;
-  color: #ebfcff;
+  color: $light-blue;
 
   &.editing {
-    border-bottom: 2px solid #7ed1f2;
+    border-bottom: 2px solid $sky-blue-saturate;
   }
   &.placeholder {
     opacity: 0.75;

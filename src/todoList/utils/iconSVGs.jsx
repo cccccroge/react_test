@@ -3,12 +3,15 @@ import { ReactComponent as Calendar } from '../assets/category_icon/calendar.svg
 import { ReactComponent as Laptop } from '../assets/category_icon/laptop.svg';
 import { ReactComponent as PaintBrush } from '../assets/category_icon/paint-brush.svg';
 
+const iconWidth = 35;
+const iconHeight = 35;
+
 export const iconSVGs = {
 	calendar: (
 		<Calendar
 			alt="calendar icon"
-			width={50}
-			height={50}
+			width={iconWidth}
+			height={iconHeight}
 			preserveAspectRatio="xMinYMid meet"
 			fill="white"
 		/>
@@ -16,8 +19,8 @@ export const iconSVGs = {
 	laptop: (
 		<Laptop
 			alt="laptop icon"
-			width={50}
-			height={50}
+			width={iconWidth}
+			height={iconHeight}
 			preserveAspectRatio="xMinYMid meet"
 			fill="white"
 		/>
@@ -25,8 +28,8 @@ export const iconSVGs = {
 	paint_brush: (
 		<PaintBrush
 			alt="paint brush icon"
-			width={50}
-			height={50}
+			width={iconWidth}
+			height={iconHeight}
 			preserveAspectRatio="xMinYMid meet"
 			fill="white"
 		/>

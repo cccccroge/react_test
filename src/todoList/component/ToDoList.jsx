@@ -28,7 +28,7 @@ const ToDoList = props => {
 	const setCategoryName = (id, name) => {
 		const categories = context.categories;
 		const index = categories.findIndex(c => c.id === id);
-		if (!index) {
+		if (index === -1) {
 			throw new Error('setCategoryName: invalid id');
 		}
 		const newCategories = categories.slice();

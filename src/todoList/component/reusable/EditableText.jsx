@@ -40,17 +40,19 @@ const EditableText = props => {
 		}
 	};
 
-	const classNames = [
+	const className = [
 		'editable-text',
 		isEdit && 'editing',
 		!text && 'placeholder',
 		customClass,
-	].filter(Boolean);
+	]
+		.filter(Boolean)
+		.join(' ');
 
 	return (
 		<span
 			ref={inputRef}
-			className={classNames.join(' ')}
+			className={className}
 			contentEditable={true}
 			suppressContentEditableWarning={true}
 			spellCheck={false}

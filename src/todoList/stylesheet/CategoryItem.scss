@@ -1,22 +1,31 @@
 @import 'common/colors.scss';
 
-.category-btn,
-.category-input {
-	font-size: 16px;
-	font-weight: bold;
-	color: $light-blue;
-	border: none;
-	background-color: $sky-blue;
-}
+.category-item {
+	flex: auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: start;
+	align-items: center;
+	margin-left: -30px;
+	padding: 10px 0 10px 30px;
 
-.category-btn {
-	min-height: 60px;
-	margin-bottom: 30px;
-	border-radius: 8px;
-}
+	.editable-text {
+		margin-left: 15px;
+		font-size: 20px;
+		color: $light-blue-inactive;
+	}
 
-.category-input {
-	border-bottom: 2px solid $sky-blue-saturate;
-	display: inline-block;
-	text-align: center;
+	svg {
+		fill: $light-blue-inactive;
+	}
+
+	&.active {
+		border-left: 2px solid $sky-blue-saturate;
+		.editable-text {
+			color: $light-blue;
+		}
+		svg {
+			fill: $light-blue;
+		}
+	}
 }
