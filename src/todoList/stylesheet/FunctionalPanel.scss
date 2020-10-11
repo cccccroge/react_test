@@ -1,0 +1,13 @@
+@import 'common/colors.scss';
+
+#functional-panel {
+	// min-height: 56px;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	svg {
+		margin: 10px;
+		margin-bottom: 30px;
+		fill: $dark-blue
+	}
+}
